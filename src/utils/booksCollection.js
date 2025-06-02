@@ -7,7 +7,8 @@ export const books = [
       "A psychological thriller about a woman who stops speaking after a traumatic incident.",
     rating: 4.2,
     category: "Fiction",
-    coverImage: "https://m.media-amazon.com/images/I/81bPKX2uVwL.jpg",
+    coverImage:
+      "https://books.google.co.in/books/publisher/content?id=a6NnDwAAQBAJ&pg=PA1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U0sd_ARiItXsE4NzgkoT7C5xKacag&w=1280",
   },
   {
     id: "4a1d9f22-45c0-4f8b-a87a-67d45f9d772b",
@@ -27,7 +28,8 @@ export const books = [
       "An epic saga of politics and power on the desert planet Arrakis.",
     rating: 4.5,
     category: "Sci-Fi",
-    coverImage: "https://m.media-amazon.com/images/I/91A3+4z0k8L.jpg",
+    coverImage:
+      "https://books.google.co.in/books/content?id=rXYdGATpigsC&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U0aYzJM0BEfiFMuHXXDCi2jFmbwCA&w=1280",
   },
   {
     id: "7b3d1591-5c89-4a8b-9cf9-c0b6e1eb6dfb",
@@ -127,7 +129,8 @@ export const books = [
       "A classic novel exploring themes of race, injustice, and morality in the Deep South.",
     rating: 4.9,
     category: "Fiction",
-    coverImage: "https://m.media-amazon.com/images/I/81OtwkiU5PL.jpg",
+    coverImage:
+      "https://m.media-amazon.com/images/I/51Z9p5AecCL._SY445_SX342_.jpg",
   },
   {
     id: "b2fa98e4-0868-40ad-a2bc-d8a36a5972e9",
@@ -157,7 +160,8 @@ export const books = [
       "A spiritual guide to living in the present moment and finding inner peace.",
     rating: 4.5,
     category: "Spirituality",
-    coverImage: "https://m.media-amazon.com/images/I/81IuXz2eYwL.jpg",
+    coverImage:
+      "https://books.google.co.in/books/content?id=sQYqRCIhFAMC&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U1fNlZ6KPWOf0nRv3eTLr29-HZ5bw&w=1280",
   },
   {
     id: "08f52e83-39a3-42e9-b50f-d0d9b7c51df4",
@@ -167,7 +171,8 @@ export const books = [
       "A story of teenage rebellion and angst narrated by Holden Caulfield.",
     rating: 4.0,
     category: "Fiction",
-    coverImage: "https://m.media-amazon.com/images/I/71XHj+5bGmL.jpg",
+    coverImage:
+      "https://m.media-amazon.com/images/I/51TI+w56qFL._SY445_SX342_.jpg",
   },
   {
     id: "35ce6ba9-3b91-4a96-84c6-ef6d2ab8dd12",
@@ -187,7 +192,8 @@ export const books = [
       "An accessible look at cosmology, black holes, and the nature of the universe.",
     rating: 4.6,
     category: "Science",
-    coverImage: "https://m.media-amazon.com/images/I/71SxZl6j5-L.jpg",
+    coverImage:
+      "https://books.google.co.in/books/content?id=9ysba1A1UF8C&pg=PA1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U1RroIOPkTFcru03D7li6Mg-yzjVg&w=1280",
   },
   {
     id: "72940d0a-5d90-4c5d-bf3d-1d8d40cc4c23",
@@ -197,7 +203,8 @@ export const books = [
       "A code of conduct based on ancient Toltec wisdom to achieve freedom and happiness.",
     rating: 4.4,
     category: "Philosophy",
-    coverImage: "https://m.media-amazon.com/images/I/81k5+Zz0eXL.jpg",
+    coverImage:
+      "https://books.google.co.in/books/publisher/content?id=t54LEAAAQBAJ&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U2Df5WBXgV_Hr7I9Hhxx5TUA1mC_w&w=1280",
   },
 ];
 

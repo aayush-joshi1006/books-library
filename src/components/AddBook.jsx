@@ -75,7 +75,7 @@ export default function AddBook() {
             </label>
             <input
               type="text"
-              className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-400"
+              className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-900"
               id="title"
               placeholder="Book's Title (required)"
               value={bookObj.title}
@@ -89,7 +89,7 @@ export default function AddBook() {
               Author*
             </label>
             <input
-              className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-400"
+              className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-900"
               type="text"
               id="author"
               placeholder="Author's Title (required)"
@@ -104,7 +104,7 @@ export default function AddBook() {
               Cover Image (url)*
             </label>
             <input
-              className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-400"
+              className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-900"
               type="url"
               id="coverImage"
               placeholder="Book's Cover Image (required)"
@@ -119,7 +119,7 @@ export default function AddBook() {
               Rating
             </label>
             <input
-              className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-400"
+              className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-900"
               type="number"
               id="rating"
               step="0.01"
@@ -140,7 +140,7 @@ export default function AddBook() {
               Category*
             </label>
             <input
-              className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-400"
+              className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-900"
               type="text"
               id="category"
               placeholder="Category (required)"
@@ -155,7 +155,7 @@ export default function AddBook() {
               Description
             </label>
             <textarea
-              className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-400"
+              className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-900"
               type="text"
               id="description"
               placeholder="Description (500 characters)"

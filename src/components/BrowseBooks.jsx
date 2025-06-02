@@ -40,21 +40,21 @@ export default function BrowseBooks() {
   }, [books]);
 
   return (
-    <div className="min-h-[90vh] w-full ">
-      <div className="text-center py-4 flex justify-center gap-10 items-center">
+    <div className="lg:min-h-[90vh] w-full ">
+      <div className="text-center py-4 flex justify-center lg:gap-10 gap-3 items-center flex-col lg:flex-row">
         <input
           type="text"
           placeholder="Search book by title or author"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="outline-none px-5 py-2 my-1 bg-[#f5f7f8] text-[#cdd2d4] min-w-[50vw] rounded-2xl"
+          className="outline-none px-5 py-2 my-1 bg-[#f5f7f8] text-gray-800 min-w-8/12 lg:min-w-[50vw] rounded-2xl"
         />
         <div className="flex justify-center items-center gap-3">
           <span>Categories:</span>
           <CategoryDropdown categories={categories} />
         </div>
       </div>
-      <div className="grid grid-cols-4  place-items-center container mx-auto my-10 gap-8">
+      <div className="grid xl:grid-cols-4 lg:grid-cols-2 grid-col-1  place-items-center lg:container lg:mx-auto my-10 gap-8">
         {filteredBooks.length == 0 && <div>No books found</div>}
         {filteredBooks.map((book) => (
           <Book key={book.id} book={book} />
