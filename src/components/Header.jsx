@@ -1,5 +1,4 @@
-import React from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { ImBooks } from "react-icons/im";
 
 export default function Header() {

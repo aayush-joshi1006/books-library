@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 import { addBook } from "../utils/booksCollectionSlice";
+import { MdArrowBackIosNew } from "react-icons/md";
 
 export default function AddBook() {
   let navigate = useNavigate();
@@ -59,90 +60,123 @@ export default function AddBook() {
 
   return (
     <>
-      <form onSubmit={submitForm}>
-        <div>
-          <label htmlFor="title">Title*</label>
-          <input
-            type="text"
-            id="title"
-            placeholder="Book's Title"
-            value={bookObj.title}
-            onChange={(e) =>
-              setBookObj((obj) => ({ ...obj, title: e.target.value }))
-            }
-          />
-        </div>
-        <div>
-          <label htmlFor="author">Author*</label>
-          <input
-            type="text"
-            id="author"
-            placeholder="Author's Title"
-            value={bookObj.author}
-            onChange={(e) =>
-              setBookObj((obj) => ({ ...obj, author: e.target.value }))
-            }
-          />
-        </div>
-        <div>
-          <label htmlFor="coverImage">Cover Image*</label>
-          <input
-            type="url"
-            id="coverImage"
-            placeholder="Cover Image"
-            value={bookObj.coverImage}
-            onChange={(e) =>
-              setBookObj((obj) => ({ ...obj, coverImage: e.target.value }))
-            }
-          />
-        </div>
-        <div>
-          <label htmlFor="rating">Rating</label>
-          <input
-            type="number"
-            id="rating"
-            step="0.01"
-            min="0"
-            max="5"
-            placeholder="Rate out of 5"
-            value={bookObj.rating}
-            onChange={(e) =>
-              setBookObj((obj) => ({
-                ...obj,
-                rating: parseFloat(e.target.value),
-              }))
-            }
-          />
-        </div>
-        <div>
-          <label htmlFor="category">Category*</label>
-          <input
-            type="text"
-            id="category"
-            placeholder="Category"
-            value={bookObj.category}
-            onChange={(e) =>
-              setBookObj((obj) => ({ ...obj, category: e.target.value }))
-            }
-          />
-        </div>
-        <div>
-          <label htmlFor="description">Description</label>
-          <input
-            type="text"
-            id="description"
-            placeholder="give a brief description about the book"
-            value={bookObj.description}
-            onChange={(e) =>
-              setBookObj((obj) => ({ ...obj, description: e.target.value }))
-            }
-          />
-        </div>
-        <div>
-          <button type="submit">Add Book</button>
-        </div>
-      </form>
-      <div>{bookObj.title}</div>
+      <div className="min-h-[90vh] flex justify-center items-center relative">
+        <button className="absolute top-2 left-2 flex justify-center items-center hover:underline text-blue-600 hover:text-blue-500">
+          <MdArrowBackIosNew />
+          <Link to="/books">Browse</Link>
+        </button>
+        <form
+          onSubmit={submitForm}
+          className="min-w-[40vw] flex justify-center items-center gap-2 flex-col p-6 shadow-2xl"
+        >
+          <div className="flex justify-center items-start flex-col w-full">
+            <label htmlFor="title" className="text-xs font-extralight">
+              Title*
+            </label>
+            <input
+              type="text"
+              className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-400"
+              id="title"
+              placeholder="Book's Title (required)"
+              value={bookObj.title}
+              onChange={(e) =>
+                setBookObj((obj) => ({ ...obj, title: e.target.value }))
+              }
+            />
+          </div>
+          <div className="flex justify-center items-start flex-col w-full">
+            <label className="text-xs font-extralight" htmlFor="author">
+              Author*
+            </label>
+            <input
+              className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-400"
+              type="text"
+              id="author"
+              placeholder="Author's Title (required)"
+              value={bookObj.author}
+              onChange={(e) =>
+                setBookObj((obj) => ({ ...obj, author: e.target.value }))
+              }
+            />
+          </div>
+          <div className="flex justify-center items-start flex-col w-full">
+            <label className="text-xs font-extralight" htmlFor="coverImage">
+              Cover Image (url)*
+            </label>
+            <input
+              className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-400"
+              type="url"
+              id="coverImage"
+              placeholder="Book's Cover Image (required)"
+              value={bookObj.coverImage}
+              onChange={(e) =>
+                setBookObj((obj) => ({ ...obj, coverImage: e.target.value }))
+              }
+            />
+          </div>
+          <div className="flex justify-center items-start flex-col w-full">
+            <label className="text-xs font-extralight" htmlFor="rating">
+              Rating
+            </label>
+            <input
+              className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-400"
+              type="number"
+              id="rating"
+              step="0.01"
+              min="0"
+              max="5"
+              placeholder="0-5"
+              value={bookObj.rating}
+              onChange={(e) =>
+                setBookObj((obj) => ({
+                  ...obj,
+                  rating: parseFloat(e.target.value),
+                }))
+              }
+            />
+          </div>
+          <div className="flex justify-center items-start flex-col w-full">
+            <label className="text-xs font-extralight" htmlFor="category">
+              Category*
+            </label>
+            <input
+              className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-400"
+              type="text"
+              id="category"
+              placeholder="Category (required)"
+              value={bookObj.category}
+              onChange={(e) =>
+                setBookObj((obj) => ({ ...obj, category: e.target.value }))
+              }
+            />
+          </div>
+          <div className="flex justify-center items-start flex-col w-full">
+            <label className="text-xs font-extralight" htmlFor="description">
+              Description
+            </label>
+            <textarea
+              className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-400"
+              type="text"
+              id="description"
+              placeholder="Description (500 characters)"
+              maxLength={500}
+              rows={4}
+              value={bookObj.description}
+              onChange={(e) =>
+                setBookObj((obj) => ({ ...obj, description: e.target.value }))
+              }
+            />
+          </div>
+          <div className="w-full">
+            <button
+              className="my-3 py-2 rounded-sm font-extralight bg-orange-600 w-full text-white hover:bg-orange-500 transition duration-500"
+              type="submit"
+            >
+              Add Book
+            </button>
+          </div>
+        </form>
+      </div>
     </>
   );
 }

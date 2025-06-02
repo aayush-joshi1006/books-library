@@ -4,7 +4,7 @@ import { MdStar } from "react-icons/md";
 
 export default function Book({ book }) {
   return (
-    <div className="rounded-sm shadow-lg p-5 w-80 flex flex-col justify-center items-center transition duration-700 hover:-translate-y-1">
+    <div className="rounded-sm shadow-lg p-5 w-80 flex flex-col justify-center items-center transition duration-700 hover:-translate-y-1 hover:shadow-2xl">
       <img
         src={book.coverImage}
         alt={`${book.title} by ${book.author}`}
@@ -15,7 +15,7 @@ export default function Book({ book }) {
         <p className="text-base italic text-center text-gray-600 font-extralight">
           {book.author}
         </p>
-        <div className="flex justify-between items-center w-11/12 mx-2 mt-2">
+        <div className="flex justify-between items-center w-64 mx-2 mt-2">
           <Link
             to={`/book/${book.id}`}
             className="px-2 py-1 font-extralight bg-[#017bb6] text-[#feffff] hover:bg-[#017ab6e0] transition duration-300 rounded-sm"
