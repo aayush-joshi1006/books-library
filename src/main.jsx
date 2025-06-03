@@ -9,6 +9,7 @@ import BookDetail from "./components/BookDetail.jsx";
 import AddBook from "./components/AddBook.jsx";
 import Error from "./components/Error.jsx";
 
+// object for creating browser routes
 const router = createBrowserRouter([
   {
     path: "/",
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    {/* providing router object as a parameter to access routes */}
     <RouterProvider router={router} />
   </StrictMode>
 );

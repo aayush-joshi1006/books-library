@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
 @import "tailwindcss";
 
+/* font family Mona Sans */
 .mona-sans-400 {
   font-family: "Mona Sans", sans-serif;
   font-optical-sizing: auto;

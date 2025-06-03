@@ -6,8 +6,10 @@ import appStore from "./utils/appStore";
 function App() {
   return (
     <>
+    {/* COntainer to provide the access to the store */}
       <Provider store={appStore}>
         <Header />
+        {/* outlet where rendered element will be displayed */}
         <Outlet />
       </Provider>
     </>

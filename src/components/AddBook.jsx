@@ -6,69 +6,112 @@ import { addBook } from "../utils/booksCollectionSlice";
 import { MdArrowBackIosNew } from "react-icons/md";
 
 export default function AddBook() {
+  // creating navigation object for navigating to links
   let navigate = useNavigate();
+  // importing book list from the redux store
   let books = useSelector((store) => store.booksList.books);
 
-  useEffect(() => {
-    localStorage.setItem("booksCollection", JSON.stringify(books));
-  }, [books]);
+  // state mamagement for the book object containing book details
   const [bookObj, setBookObj] = useState({
     title: "",
     author: "",
     description: "",
-    rating: 0,
+    rating: "",
     category: "",
     coverImage: "",
   });
 
+  // method for calling in function from redux store
   let dispatch = useDispatch();
 
+  //useEffect hook used for setting changes made in book collection
+  useEffect(() => {
+    // set books data onto local storage
+    localStorage.setItem("booksCollection", JSON.stringify(books));
+  }, [books]);
+
+  // function for validating and submitting book data to be added to the books collection
   function submitForm(e) {
+    // method to prevent default behavior of form submittion
     e.preventDefault();
 
-    const { title, author, category, coverImage } = bookObj;
+    // extracting book object data for validation
+    const { title, author, category, coverImage, rating, description } =
+      bookObj;
 
-    if (!title || !author || !category || !coverImage) {
+    // validation if required fields are not filled
+    if (
+      !title ||
+      !author ||
+      !category ||
+      !coverImage ||
+      !rating ||
+      !description
+    ) {
       alert("Please fill in all the required fields");
       return;
     }
 
+    // checking if the book already exists on the collection
     let alreadyExists = books.some(
       (book) => book.title.trim().toLowerCase() === title.toLowerCase().trim()
     );
 
+    // providing error messge is case of book already existing
     if (alreadyExists) {
       alert("Book already exists in the Collection");
       return;
     }
 
-    const newBook = { ...bookObj, id: uuidv4() };
+    // trimming away extra white spaces in the fields
+    const trimmedBookObj = {
+      ...bookObj,
+      title: bookObj.title.trim(),
+      author: bookObj.author.trim(),
+      category: bookObj.category.trim(),
+      coverImage: bookObj.coverImage.trim(),
+    };
+
+    // added unique id to book using uuid library for identification
+    const newBook = { ...trimmedBookObj, id: uuidv4() };
+
+    // dispatching the book object to the redux store for storing the book in the books collection
     dispatch(addBook(newBook));
 
+    // message showing book is added to the collection
     alert("Book Added to the Collection");
+
+    // emptying all filled fields to empty
     setBookObj({
       title: "",
       author: "",
       description: "",
-      rating: 0,
+      rating: "",
       category: "",
       coverImage: "",
     });
 
+    // re-directng to the browse page
     navigate("/books");
   }
 
   return (
     <>
       <div className="min-h-[90vh] flex justify-center items-center relative">
-        <button className="absolute top-2 left-2 flex justify-center items-center hover:underline text-blue-600 hover:text-blue-500">
+        {/* Link directing to the browse page */}
+        <Link
+          to="/books"
+          className="absolute top-2 left-2 flex justify-center items-center hover:underline text-blue-600 hover:text-blue-500"
+        >
           <MdArrowBackIosNew />
-          <Link to="/books">Browse</Link>
-        </button>
+          Browse
+        </Link>
+        {/* form for handling the book submittion */}
         <form
           onSubmit={submitForm}
-          className="min-w-[40vw] flex justify-center items-center gap-2 flex-col p-6 shadow-2xl"
+          className="w-[90vw] sm:w-[60vw] md:w-[50vw] lg:w-[40vw] flex justify-center items-center gap-2 flex-col p-6 shadow-2xl"
         >
+          {/*book's title component required field */}
           <div className="flex justify-center items-start flex-col w-full">
             <label htmlFor="title" className="text-xs font-extralight">
               Title*
@@ -84,6 +127,7 @@ export default function AddBook() {
               }
             />
           </div>
+          {/* book's author name component (required field) */}
           <div className="flex justify-center items-start flex-col w-full">
             <label className="text-xs font-extralight" htmlFor="author">
               Author*
@@ -99,6 +143,7 @@ export default function AddBook() {
               }
             />
           </div>
+          {/* Cover Image component, accepts url (required component) */}
           <div className="flex justify-center items-start flex-col w-full">
             <label className="text-xs font-extralight" htmlFor="coverImage">
               Cover Image (url)*
@@ -114,9 +159,11 @@ export default function AddBook() {
               }
             />
           </div>
+
+          {/* rating component value btw 0-5 (required field) */}
           <div className="flex justify-center items-start flex-col w-full">
             <label className="text-xs font-extralight" htmlFor="rating">
-              Rating
+              Rating*
             </label>
             <input
               className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-900"
@@ -125,9 +172,10 @@ export default function AddBook() {
               step="0.01"
               min="0"
               max="5"
-              placeholder="0-5"
+              placeholder="0-5 (required)"
               value={bookObj.rating}
               onChange={(e) =>
+                //function for coverting String to FLoat value
                 setBookObj((obj) => ({
                   ...obj,
                   rating: parseFloat(e.target.value),
@@ -135,6 +183,7 @@ export default function AddBook() {
               }
             />
           </div>
+          {/* Component for setting the Category of the book (reqiured) */}
           <div className="flex justify-center items-start flex-col w-full">
             <label className="text-xs font-extralight" htmlFor="category">
               Category*
@@ -150,15 +199,16 @@ export default function AddBook() {
               }
             />
           </div>
+          {/* Componet for the description of the book with max 500 characters (required) */}
           <div className="flex justify-center items-start flex-col w-full">
             <label className="text-xs font-extralight" htmlFor="description">
-              Description
+              Description*
             </label>
             <textarea
               className="w-full outline-none bg-gray-100 px-5 py-2 rounded-sm text-gray-900"
               type="text"
               id="description"
-              placeholder="Description (500 characters)"
+              placeholder="Description (required)"
               maxLength={500}
               rows={4}
               value={bookObj.description}
@@ -166,7 +216,12 @@ export default function AddBook() {
                 setBookObj((obj) => ({ ...obj, description: e.target.value }))
               }
             />
+            {/* parashaph showing the number of characters used out of 500 */}
+            <p className="text-xs text-gray-400">
+              {bookObj.description.length}/500 characters
+            </p>
           </div>
+          {/* Button componet for submitting the form data of the book */}
           <div className="w-full">
             <button
               className="my-3 py-2 rounded-sm font-extralight bg-orange-600 w-full text-white hover:bg-orange-500 transition duration-500"
